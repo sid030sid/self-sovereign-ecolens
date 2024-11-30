@@ -14,7 +14,7 @@ export default function VpSuccessPopUp(props) {
                 <DialogTitle>Ecopoints successfully presented!</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        You have {props.ecopointsCredential.ecopoints} Eco-points that were issed by {props.ecopointsCredential.issuer}
+                        The customer has {props.ecopointsCredential.ecopoints} Eco-points that were issued by {props.ecopointsCredential.issuer}.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
