@@ -1,26 +1,70 @@
-# Self-sovereign Ecolens
+# Getting Started with Create React App
 
-## About
-Ecolens is a mobile app for students to gain points for chosing environmentally friendly meals offered on-campus. These ``eco-points`` can be used for rewards, such as discounts for the next meals or little prices. Besides, this financial incentive, Ecolens uses gamification to additionally motivate students to chose the environemntally for facilitating (Read more on the Ecolens Project [here](https://zeroemission.group/ecolens/)). This repo provides the technical infrastructure to issue and verify eco-points using the Self-Sovereign Identiy paradigm that guranteeis the sovereignity of students over their private data while guranteeing the functionality of the ecolens application.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Repo overview
-- Folder `issuer` contains a web app that issuers of eco-points can use during the conduct of their ordinary business. [issuers](./issuer/README.md) of eco-points are restaurants or food stands on-campus that sell meals to students and use Ecolens to reward them for chosing their ecologically friendly meal choices. 
-- Folder `verfifier` contains an examplary web app that can be used by verifiers of eco-points. In general, [verifiers](./verifier/README.md) of eco-points are legal entities that accepts eco-points to give out discounts, prizes, or any other financial incentives. The examplary web app is for restaurants that allow their customers to buy meals with eco-points, thus incentivising environmentally friendly food consumption.
+## Available Scripts
 
-## How to...
-### ... set up?
-TODO
+In the project directory, you can run:
 
-### ... start web app for issuer and verifier of eco-point Verifiable Credentials?
-TODO
+### `npm start`
 
-## FAQ
-### Why use Ecolens as a student?
-TODO
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Why use Ecolens as a restaurant?
-TODO
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Why accept eco-points awarded through Ecolens for discounts, prices, and other financial incentives?
-TODO
+### `npm test`
 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
