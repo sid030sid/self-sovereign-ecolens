@@ -7,6 +7,13 @@ Ecolens is a mobile app for students to gain points for chosing environmentally 
 - Folder `issuer` contains a web app that issuers of eco-points can use during the conduct of their ordinary business. [issuers](./issuer/README.md) of eco-points are restaurants or food stands on-campus that sell meals to students and use Ecolens to reward them for chosing their ecologically friendly meal choices. 
 - Folder `verfifier` contains an examplary web app that can be used by verifiers of eco-points. In general, [verifiers](./verifier/README.md) of eco-points are legal entities that accepts eco-points to give out discounts, prizes, or any other financial incentives. The examplary web app is for restaurants that allow their customers to buy meals with eco-points, thus incentivising environmentally friendly food consumption.
 
+## How to...
+### ... set up?
+TODO
+
+### ... start web app for issuer and verifier of eco-point Verifiable Credentials?
+TODO
+
 ## FAQ
 ### Why use Ecolens as a student?
 TODO
