@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid, Container, Typography } from '@mui/material';
 import MediaCard from './components/MediaCard';
+import VpRequestPopUp from './components/VpRequstPopUp';
+import axios from 'axios';
 
 const meals = [
     {
@@ -25,6 +27,20 @@ const meals = [
 ];
 
 export default function Menu() {
+  const [oid4vpUrl, setOid4vpUrl] = React.useState("")
+
+  const handlePopUpClose = () => {
+    setOid4vpUrl("")
+  }
+
+  const buyWithEcopoints = async () => {
+    const requestOid4vpUrl = await axios.get("/api-verifier/generate-vp-request");
+    console.log(requestOid4vpUrl)
+
+    // update url for user to scan and initiate OID4VP
+    setOid4vpUrl(requestOid4vpUrl.data.vpRequest)
+  }
+
   return (
     <Container sx={{ py: 4 }}>
       <Typography variant="h4" component="h1" gutterBottom>
@@ -33,10 +49,15 @@ export default function Menu() {
       <Grid container spacing={4}>
         {meals.map((meal, index) => (
           <Grid item key={index} xs={12} sm={6} md={4}>
-            <MediaCard meal={meal} />
+            <MediaCard meal={meal} buyWithEcopoints={buyWithEcopoints}/>
           </Grid>
         ))}
       </Grid>
+      <VpRequestPopUp 
+        open={oid4vpUrl? true : false} 
+        handleClose={handlePopUpClose} 
+        url={oid4vpUrl}
+      />
     </Container>
   );
 }

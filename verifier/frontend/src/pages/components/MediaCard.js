@@ -23,10 +23,22 @@ export default function MediaCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="outlined" size="small">Buy for {props.meal.price} CHF</Button>
+        <Button 
+          variant="outlined" 
+          size="small"
+          onClick={()=>alert("Not part of demo.")}
+        >
+          Buy for {props.meal.price} CHF
+        </Button>
         {
             props.meal.numberEcoPointsNeeded ? 
-                <Button variant="contained" size="small">Buy for {props.meal.numberEcoPointsNeeded} Eco-points</Button>
+                <Button 
+                  variant="contained" 
+                  size="small"
+                  onClick={props.buyWithEcopoints}
+                >
+                  Buy for {props.meal.numberEcoPointsNeeded} Eco-points
+                </Button>
             :
             ""
         }
