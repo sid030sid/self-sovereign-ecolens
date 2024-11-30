@@ -39,8 +39,6 @@ const ecopoint_vc_presentation_definition = {
     ],
   }
 
-  
-
 // global variables
 const serverURL = process.env.BASE_URL+"/api-verifier";
 const authServerURL = process.env.BASE_URL+"/api-auth";
