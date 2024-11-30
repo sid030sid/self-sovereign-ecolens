@@ -52,9 +52,7 @@ export default function Menu() {
         const ecopoints = data.ecopoints;
         const issuer = data.issuer;
 
-        console.log("data:", data)
-        
-        if (ecopoints & issuer) {
+        if (ecopoints !== "" & issuer !== "") {
             // update view because of successful OID4VP
             setOid4vpUrl("")
             setEcopointsCredenital({
