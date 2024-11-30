@@ -111,10 +111,15 @@ router.route('/direct-post/:state').post(async (req, res) => {
         if(!credentialTypes.includes("EcopointsCredential")){ // correct credential type?
           return res.status(402).send("Invalid credential type");
         }
-        // check revocation status in IPFS
+        // TODO: check revocation status in IPFS
 
-        //since vc is valid, do... what?
-          //update frontend
+        //since vc is valid, update frontend via websocket
+        const wsClient = Array.from(req.app.get("wss").clients).find(client => client.state === state); //TODO for dev: this should be ws instead of wss
+        if (wsClient && wsClient.readyState === WebSocket.OPEN) { // Check for WebSocket client and send token if connected
+            wsClient.send(JSON.stringify({ ecopoints, issuer}));
+        }
+
+        res.status(200).send("Token sent via WebSocket");
 
     } catch (error) {
         console.error("Error processing request:", error);

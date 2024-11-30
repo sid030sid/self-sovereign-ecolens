@@ -28,6 +28,7 @@ const meals = [
 
 export default function Menu() {
   const [oid4vpUrl, setOid4vpUrl] = React.useState("")
+  const [ecopointsCredential, setEcopointsCredenital] = React.useState("")
 
   const handlePopUpClose = () => {
     setOid4vpUrl("")
@@ -35,10 +36,32 @@ export default function Menu() {
 
   const buyWithEcopoints = async () => {
     const requestOid4vpUrl = await axios.get("/api-verifier/generate-vp-request");
-    console.log(requestOid4vpUrl)
 
     // update url for user to scan and initiate OID4VP
     setOid4vpUrl(requestOid4vpUrl.data.vpRequest)
+
+    //websocket connection to get token from verifier service
+    const state = requestOid4vpUrl.data.state
+    const ws = new WebSocket(`wss://${process.env.REACT_APP_BASE_URL}/ws?state=${state}`);
+    ws.onmessage = async (event) => {
+        const data = JSON.parse(event.data);
+        const ecopoints = data.ecopoints;
+        const issuer = data.issuer;
+        
+        if (ecopoints & issuer) {
+            // update view because of successful OID4VP
+            setOid4vpUrl("")
+            setEcopointsCredenital({
+              ecopoints: ecopoints,
+              issuer: issuer
+            })
+        }else{
+            alert("Data from Ecopoints VC not received after OID4VP")
+        }
+    };
+    ws.onclose = () => {
+        console.log("WebSocket connection closed");
+    };
   }
 
   return (
