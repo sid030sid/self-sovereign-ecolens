@@ -47,12 +47,6 @@ router.post("/offer", async (req, res) => {
     // get number of ecopoints that should be issued
     const ecopoints = req.body.ecopoints
 
-    // get requested credential type and check its validness
-    const credentialType = req.body.credentialType
-    if(credentialType !== "EcopointsCredential"){
-      res.status(400).send("Invalid credential type")
-    }
-
     // create credential offer uuid and pre-authorized code
     const uuid = crypto.randomUUID();
     const pre_authorized_code = generateNonce(32);
@@ -69,7 +63,7 @@ router.post("/offer", async (req, res) => {
         ecopoints: ecopoints,
         revocationStatus: cid
       },
-      type: ["VerifiableCredential", credentialType]
+      type: ["VerifiableCredential", "EcopointsCredential"]
     }
 
     // create credential offer

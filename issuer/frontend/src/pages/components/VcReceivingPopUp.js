@@ -16,7 +16,7 @@ export default function VcReceivingPopUp(props) {
                 <DialogTitle>Claim Verifable Credential for your Eco-points</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Claim your Verifiable Credenital attesting your ownership to Eco-points.
+                        Claim your Verifiable Credenital attesting your ownership of {props.ecopoints} Eco-points.
                     </DialogContentText>
                     <br></br>
                     <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
