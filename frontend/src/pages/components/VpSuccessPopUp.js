@@ -5,8 +5,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import QRCode from "react-qr-code";
-import { Link } from '@mui/material';
 
 export default function VpSuccessPopUp(props) {
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Container, Typography } from '@mui/material';
 import MediaCard from './components/MediaCard';
 import VpRequestPopUp from './components/VpRequstPopUp';
+import VpSuccessPopUp from './components/VpSuccessPopUp';
 import axios from 'axios';
 
 const meals = [
@@ -34,7 +35,7 @@ export default function Menu() {
     setOid4vpUrl("")
   }
   const handlePop2UpClose = () => {
-    setOid4vpSuccess(false)
+    setEcopointsCredenital("")
   }
 
   const buyWithEcopoints = async () => {
