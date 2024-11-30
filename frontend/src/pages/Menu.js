@@ -51,6 +51,9 @@ export default function Menu() {
         const data = JSON.parse(event.data);
         const ecopoints = data.ecopoints;
         const issuer = data.issuer;
+
+        console.log(issuer)
+        console.log(ecopoints)
         
         if (ecopoints & issuer) {
             // update view because of successful OID4VP
