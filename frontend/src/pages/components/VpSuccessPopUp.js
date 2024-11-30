@@ -1,0 +1,28 @@
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import QRCode from "react-qr-code";
+import { Link } from '@mui/material';
+
+export default function VpSuccessPopUp(props) {
+
+    return (
+        <React.Fragment>
+            <Dialog open={props.open} onClose={props.handleClose}>
+                <DialogTitle>Ecopoints successfully presented!</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        You have {props.ecopointsCredential.ecopoints} Eco-points that were issed by {props.ecopointsCredential.issuer}
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={props.handleClose}>Close</Button>
+                </DialogActions>
+            </Dialog>
+        </React.Fragment>
+    );
+}

@@ -33,6 +33,9 @@ export default function Menu() {
   const handlePopUpClose = () => {
     setOid4vpUrl("")
   }
+  const handlePop2UpClose = () => {
+    setOid4vpSuccess(false)
+  }
 
   const buyWithEcopoints = async () => {
     const requestOid4vpUrl = await axios.get("/api-verifier/generate-vp-request");
@@ -80,6 +83,11 @@ export default function Menu() {
         open={oid4vpUrl? true : false} 
         handleClose={handlePopUpClose} 
         url={oid4vpUrl}
+      />
+      <VpSuccessPopUp 
+        open={ecopointsCredential? true : false} 
+        handleClose={handlePop2UpClose}
+        ecopointsCredential={ecopointsCredential} 
       />
     </Container>
   );
