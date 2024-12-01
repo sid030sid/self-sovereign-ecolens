@@ -101,10 +101,34 @@ const buildVpRequestJwt = (
     return token;
 }
 
+/*
+* // Example input:
+* const file = new File(["example string"], "credentialId", {type: "text/plain"});
+*/
+const calculateCid = async (file) => {
+  // Dynamically import required libraries
+  const { CID } = await import("multiformats/cid");
+  const { sha256 } = await import("multiformats/hashes/sha2");
+
+  // Read file as a buffer
+  const fileContent = await file.arrayBuffer();
+  const buffer = new Uint8Array(fileContent);
+
+  // Hash the raw content using SHA-256
+  const hash = await sha256.digest(buffer);
+
+  // Create the CID using the raw codec (0x55)
+  const rawCodec = 0x55; // RAW codec
+  const cid = CID.create(1, rawCodec, hash);
+
+  return cid.toV1().toString();
+};
+
 module.exports = {
     generateNonce,
     convertBase58ToJWK,
     bs58toPem,
     pemToJWK,
-    buildVpRequestJwt
+    buildVpRequestJwt,
+    calculateCid
 };

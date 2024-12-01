@@ -5,7 +5,7 @@ const fs = require("fs")
 require("dotenv").config();
 
 // load in helper functions
-const {generateNonce} = require("../utils/helperFunctions");
+const {generateNonce, calculateCid} = require("../utils/helperFunctions");
 
 // global variables
 const serverURL = process.env.BASE_URL+"/api-issuer";
