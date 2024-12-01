@@ -53,7 +53,7 @@ router.post("/offer", async (req, res) => {
     const credentialId = crypto.randomUUID();
 
     // get CID of IPFS based revocation status
-      // sign credentialId and get the signatures CID
+      // sign credentialId and get the signature's CID
       const cid = "TODO"
 
     // prepare credential subject based on desired amount of ecopoints
@@ -61,7 +61,7 @@ router.post("/offer", async (req, res) => {
       credentialSubject: {
         credenitalId: credentialId,
         ecopoints: ecopoints,
-        revocationStatus: cid
+        revocationStatusCid: cid
       },
       type: ["VerifiableCredential", "EcopointsCredential"]
     }
@@ -219,10 +219,10 @@ router.route("/.well-known/openid-credential-issuer").get(async (req, res) => {
                 },
               ],
             },
-            revocationStatus: {
+            revocationStatusCid: {
               display: [
                 {
-                  name: "Revocation Status",
+                  name: "CID of Revocation Status in IPFS",
                   locale: "en-US",
                 },
               ],
