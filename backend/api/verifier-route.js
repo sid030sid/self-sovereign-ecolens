@@ -38,7 +38,7 @@ const ecopoint_vc_presentation_definition = {
               path: ["$.credentialSubject.ecopoints", "$.vc.credentialSubject.ecopoints"],
             },
             {
-              path: ["$.credentialSubject.revocationStatus", "$.vc.credentialSubject.revocationStatus"],
+              path: ["$.credentialSubject.revocationStatusCid", "$.vc.credentialSubject.revocationStatusCid"],
             }
           ],
         },
