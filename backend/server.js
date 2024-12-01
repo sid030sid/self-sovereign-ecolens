@@ -44,6 +44,10 @@ wss.on("connection", (ws, req) => {
 const apiVerifierRouter = require("./api/verifier-route.js");
 app.use("/api-verifier", apiVerifierRouter);
 
+// use API for IPFS
+const apiIpfsRouter = require("./api/ipfs-route");
+app.use("/api-ipfs", apiIpfsRouter);
+
 //if production give app static assets (e.g. favicon and all routes)
 if(process.env.NODE_ENV === "production"){
   // allow app to use static files of build folder

@@ -113,7 +113,14 @@ router.route('/direct-post/:state').post(async (req, res) => {
         }
         // TODO: check revocation status in IPFS
 
-        //since vc is valid, update frontend via websocket
+        //since vc is valid...
+
+        //...buy meal with ecopoints
+          //TODO: must be implemented by legal entity underlying this verifier)
+
+        //... revoke ecopoints credential used for buying meal
+        
+        //update frontend via websocket
         const wsClient = Array.from(req.app.get("wss").clients).find(client => client.state === state); //TODO for dev: this should be ws instead of wss
         if (wsClient && wsClient.readyState === WebSocket.OPEN) { // Check for WebSocket client and send token if connected
             wsClient.send(JSON.stringify({ ecopoints, issuer}));

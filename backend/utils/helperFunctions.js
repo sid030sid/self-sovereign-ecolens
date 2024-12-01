@@ -101,10 +101,58 @@ const buildVpRequestJwt = (
     return token;
 }
 
+/*
+* // Example input:
+* const file = new File(["Hello, IPFS!"], "hello.txt", {type: "text/plain"});
+*/
+const calculateCid = async (file) => {
+  // Dynamically import required libraries
+  const { CID } = await import("multiformats/cid");
+  const { sha256 } = await import("multiformats/hashes/sha2");
+
+  // Read file as a buffer
+  const fileContent = await file.arrayBuffer();
+  const buffer = new Uint8Array(fileContent);
+
+  // Hash the raw content using SHA-256
+  const hash = await sha256.digest(buffer);
+
+  // Create the CID using the raw codec (0x55)
+  const rawCodec = 0x55; // RAW codec
+  const cid = CID.create(1, rawCodec, hash);
+
+  return cid.toV1().toString();
+};
+
+/*
+const calculateCid = async (file) => {
+  // dynamically import required libraries
+  const { CID } = await import("multiformats/cid");
+  const { sha256 } = await import("multiformats/hashes/sha2");
+  const dagPB = await import("@ipld/dag-pb");
+
+  // Read file as a buffer
+  const fileContent = await file.arrayBuffer();
+  const buffer = new Uint8Array(fileContent);
+
+  // Create a DAG-PB block (IPFS uses this for files)
+  const block = dagPB.encode({ Data: buffer, Links: [] });
+
+  // Hash the block using SHA-256
+  const hash = await sha256.digest(block);
+
+  // Create the CID from the hash
+  const cid = CID.create(1, dagPB.code, hash);
+
+  return cid.toV1().toString();
+}
+*/
+
 module.exports = {
     generateNonce,
     convertBase58ToJWK,
     bs58toPem,
     pemToJWK,
-    buildVpRequestJwt
+    buildVpRequestJwt,
+    calculateCid
 };
