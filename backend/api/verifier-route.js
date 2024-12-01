@@ -4,6 +4,13 @@ const fs = require("fs")
 require("dotenv").config();
 const { v4: uuidv4 } = require("uuid");
 const axios = require('axios');
+const {PinataSDK: PinataIpfsApi} = require("pinata-web3");
+
+// instantiate the ipfs api aka public ipfs storage
+const ipfsApi = new PinataIpfsApi({
+  pinataJwt: process.env.PINATA_API_JWT,
+  pinataGateway: process.env.PINATA_API_GATEWAY,
+});
 
 // load in helper functions
 const {generateNonce, pemToJWK, buildVpRequestJwt} = require("../utils/helperFunctions");
@@ -103,7 +110,7 @@ router.route('/direct-post/:state').post(async (req, res) => {
         const decodedVPToken = jwt.decode(req.body.vp_token);
         const decodedVerifiableCredential = jwt.decode(decodedVPToken.vp.verifiableCredential[0]);
         const ecopoints = decodedVerifiableCredential.vc.credentialSubject.ecopoints;
-        const revocationStatus = decodedVerifiableCredential.vc.credentialSubject.revocationStatus;
+        //const revocationStatusCid = decodedVerifiableCredential.vc.credentialSubject.revocationStatusCid;
         const credentialTypes = decodedVerifiableCredential.vc.type;
         const issuer = decodedVerifiableCredential.vc.issuer;
 
@@ -111,14 +118,16 @@ router.route('/direct-post/:state').post(async (req, res) => {
         if(!credentialTypes.includes("EcopointsCredential")){ // correct credential type?
           return res.status(402).send("Invalid credential type");
         }
-        // TODO: check revocation status in IPFS
+        // check revocation status in IPFS
+          //const revocationStatus = await ipfsApi.gateways.get(revocationStatusCid);
 
         //since vc is valid...
 
         //...buy meal with ecopoints
           //TODO: must be implemented by legal entity underlying this verifier)
 
-        //... revoke ecopoints credential used for buying meal
+        //... revoke ecopoints credential used for buying meal by uploading revocation status to ipfs
+          //TODO
         
         //update frontend via websocket
         const wsClient = Array.from(req.app.get("wss").clients).find(client => client.state === state); //TODO for dev: this should be ws instead of wss

@@ -75,11 +75,16 @@ router.route('/download/:cid').get(async (req, res) => {
         if (data) {
             return res.send(data);
         } else {
-            return res.status(404).send("File not found on IPFS");
+            return res.status(201).send("File not found on IPFS");
         }
     } catch (error) {
-        console.error("Error in download route:", error);
-        return res.status(500).send("Server error");
+        if (error instanceof ipfsApi.errors.AuthenticationError) {
+            // Handle the specific AuthenticationError
+            return res.status(201).send("File not found on IPFS");
+        } else {
+            console.error("Error in download route:", error);
+            return res.status(500).send("Server error");
+        }
     }
 });
 
