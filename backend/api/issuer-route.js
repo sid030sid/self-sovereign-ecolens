@@ -53,7 +53,7 @@ router.post("/offer", async (req, res) => {
     const credentialId = crypto.randomUUID();
 
     // get CID of IPFS based revocation status
-      // sign credentialId and get the signature's CID
+      // TODO: get cid of this data: {credentialId: credentialData, revoked: true}
       const cid = "TODO"
 
     // prepare credential subject based on desired amount of ecopoints
