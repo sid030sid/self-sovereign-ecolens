@@ -4,12 +4,19 @@ const Home = () => {
     return (
         <Container sx={{ py: 4 }}>
             <Typography variant="h4" component="h1" gutterBottom>
-                Welcome to Ecolens
+                About Ecolens
             </Typography>
 
             <Typography variant="h6" paragraph>
                 Ecolens is a mobile app that empowers students to earn eco-points by choosing environmentally friendly meals on-campus. These eco-points can be used for rewards such as discounts on future meals or exciting prizes. By promoting sustainable eating, Ecolens encourages a greener, more eco-conscious campus environment.
             </Typography>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
 
             <Box sx={{ my: 3 }}>
                 <Typography variant="h5" gutterBottom>
