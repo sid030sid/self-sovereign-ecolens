@@ -82,7 +82,12 @@ const Home = () => {
             </Box>
 
             <Box sx={{ mt: 4, textAlign: 'center' }}>
-                <Button variant="contained" color="primary" size="large">
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    onClick={() => window.open("https://zeroemission.group/ecolens/", "_blank")}
+                >
                     Learn More About Ecolens
                 </Button>
             </Box>
